@@ -322,5 +322,11 @@
         "url": "https://fundacionlealtad.org/terremotos-venezuela-respuesta-ong-acreditadas",
         "descripcion": "Listado de ONG acreditadas que responden al terremoto, para donar con seguridad",
         "id": 54
+    },
+    {
+        "nombre": "busqueda_vzla_temblor_bot - Bot de Telegram",
+        "url": "https://t.me/busqueda_vzla_temblor_bot",
+        "descripcion": "Bot de Telegram te ayuda a encontrar a familiares ingresados en hospitales tras el sismo",
+        "id": 55
     }
 ]
