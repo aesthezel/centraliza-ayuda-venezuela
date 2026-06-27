@@ -207,7 +207,12 @@ class ApiManager {
                     url:"https://build4venezuela.com/es",
                     descripcion:"Una hackathon humanitaria para construir soluciones tech por Venezuela"
                 },
-                
+                {
+                    id:28,
+                    nombre:"Salud pro",
+                    url:"https://apoyo.salu.pro/",
+                    descripcion:"Registro centralizado y gratuito de personas desaparecidas tras la catástrofe. "
+                },
                
             ]
                
