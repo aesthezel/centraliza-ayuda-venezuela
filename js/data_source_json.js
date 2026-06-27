@@ -1,7 +1,7 @@
 //no actualizar este archivo directamente.
 //Añadir nuevas fuente en el arreglo data_source_helper/new_sources.json
 //luego ejecutar merge_sources.py
-const SOURCES = [
+var SOURCES = [
     {
         "id": 1,
         "nombre": "Hospitales en Venezuela",

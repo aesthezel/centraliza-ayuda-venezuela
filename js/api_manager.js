@@ -35,35 +35,36 @@ class ApiManager {
 
     seachForSites = async (payload) => {
 
-        
         const sites = this.#sites();
         const matches = [];
-        const textToSearch = payload.textToSearch != null ? payload.textToSearch:null;
-        
-        if(textToSearch == null) {
+        const textToSearch = payload.textToSearch != null ? payload.textToSearch : null;
+
+        if (textToSearch == null) {
             return sites;
         }
-        const containtWordRegex = new RegExp(textToSearch, "i"); 
-        sites.forEach((item) => {
-            
+
+        const escapedText = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const containtWordRegex = new RegExp(escapedText, "i");
+
+        sites.data.forEach((item) => {
+
             const searchArray = [];
-            const name = item.nombre.toLowerCase();
-            const description = item.descripcion.toLowerCase();
+            const name = item.nombre || '';
+            const description = item.descripcion || '';
             let tags = item.tags != null ? item.tags : [];
-            tags = tags.map( (item) => item.toLowerCase())
             searchArray.push(name);
             searchArray.push(description);
-            searchArray.push(...tags); 
-            searchArray.forEach((searchTerm) => {
+            searchArray.push(...tags);
 
-                if(containtWordRegex.test(searchTerm)) {
+            for (const searchTerm of searchArray) {
+                if (containtWordRegex.test(searchTerm)) {
                     matches.push(item);
                     break;
                 }
-            });
+            }
         });
 
-        return matches;
+        return { data: matches };
     }
 
     #sites = () => {

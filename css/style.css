@@ -108,6 +108,95 @@ footer p {
 }
 
 /* ===========================
+   Fixed Top Wrapper & Search Bar
+   =========================== */
+
+/* Fixed top wrapper */
+.fixed-top-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Spacer to compensate fixed header + search bar height */
+.fixed-top-spacer {
+    height: 120px;
+}
+
+/* Search bar */
+.search-bar {
+    background-color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.search-bar__input-wrapper {
+    position: relative;
+    max-width: 100%;
+}
+
+.search-bar__input {
+    width: 100%;
+    padding: 0.625rem 2.5rem 0.625rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-bar__input:focus {
+    outline: 2px solid #1a237e;
+    outline-offset: 1px;
+}
+
+/* Icons positioning */
+.search-bar__icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.search-bar__icon--magnifier {
+    display: block;
+}
+
+.search-bar__icon--spinner {
+    display: none;
+}
+
+/* Loading state */
+.search-bar--loading .search-bar__icon--magnifier {
+    display: none;
+}
+
+.search-bar--loading .search-bar__icon--spinner {
+    display: block;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-bar__icon--spinner {
+    animation: spin 0.8s linear infinite;
+}
+
+/* No results message */
+.no-results-message {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ===========================
    Desktop Breakpoint Styles
    (>= 768px)
    =========================== */

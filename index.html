@@ -7,11 +7,36 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <h1>Directorio de Sitios Web para Venezuela</h1>
-    </header>
+    <div class="fixed-top-wrapper">
+        <header>
+            <h1>Directorio de Sitios Web para Venezuela</h1>
+        </header>
+        <div class="search-bar" role="search">
+            <div class="search-bar__input-wrapper">
+                <input
+                    id="search-text-input"
+                    type="search"
+                    class="search-bar__input"
+                    placeholder="Buscar sitios web"
+                    aria-label="Buscar sitios web"
+                    aria-busy="false"
+                    autocomplete="off"
+                />
+                <svg class="search-bar__icon search-bar__icon--magnifier" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <svg class="search-bar__icon search-bar__icon--spinner" role="status" aria-label="Buscando" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" stroke-dashoffset="10"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-top-spacer"></div>
+
     <main>
-        <ul id="sites-list" aria-label="Directorio de sitios web">
+        <ul id="sites-list" aria-label="Directorio de sitios web" aria-live="polite">
             <!-- Tarjetas de sitios renderizadas dinámicamente -->
         </ul>
     </main>

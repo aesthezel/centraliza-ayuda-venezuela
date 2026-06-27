@@ -48,6 +48,15 @@ class View {
         }
     }
 
+    showNoResults() {
+        const sitesList = this.#rootView.querySelector('#sites-list');
+        sitesList.innerHTML = '';
+        const li = document.createElement('li');
+        li.className = 'no-results-message';
+        li.textContent = 'No se encontraron coincidencias para su búsqueda.';
+        sitesList.appendChild(li);
+    }
+
     showError(message) {
         const main = this.#rootView.querySelector('main');
         const errorDiv = document.createElement('div');

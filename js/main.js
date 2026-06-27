@@ -26,28 +26,32 @@ function main() {
         });
 
    // ==========================
-   const searchText = document.getElementById("search-text-input");
-   const searchTextSpinner = document.getElementById("search-text-spinner");
+   const searchTextInput = document.getElementById("search-text-input");
+   const magnifierElement = document.querySelector('.search-bar__icon--magnifier');
+   const spinnerElement = document.querySelector('.search-bar__icon--spinner');
    const searchText = new SeachText({
-        "searchTextInput":searchText,
-        "spinnerElement":searchTextSpinner,
+        "searchTextInput":searchTextInput,
+        "magnifierElement":magnifierElement,
+        "spinnerElement":spinnerElement,
         "debounceDelay":300
    });
    
    searchText.setOnValueChangeListener((value) => {
+        
         searchText.showLoading(true);
         apiManager.seachForSites({"textToSearch":value})
             .then((res) => {
                 viewManager.cleanView();
-                if(res.data.length > 0) {
+                if(res?.data?.length > 0) {
                     viewManager.showResult(res.data);
                 }
                 else{
-                    // no se encontraron coincidencias
+                    viewManager.showError("No se encontraron coincidencias.");
                 }
             })
             .catch((err) => {
                 console.error(err);
+                viewManager.cleanView();
                 viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
             })
             .finally(() => {

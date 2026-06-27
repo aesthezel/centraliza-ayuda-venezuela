@@ -1,31 +1,29 @@
 class SeachText {
 
     #searchText;
+    #magnifierElement;
     #spinnerElement;
     #debounceDelay;
     #searchTimeout = null;
-    
+
     #previusValue = null;
 
     #onValueChangeListener = null;
 
     constructor(config) {
-
         this.#searchText = config.searchTextInput;
+        this.#magnifierElement = config.magnifierElement;
         this.#spinnerElement = config.spinnerElement;
-        this.#debounceDelay = config.debounceDelay != null ? config.debounceDelay: 300;
+        this.#debounceDelay = config.debounceDelay != null ? config.debounceDelay : 300;
         this.#searchText.addEventListener("input", this.#onInputHandler);
     }
 
     showLoading(isLoading) {
-        //this.#spinnerElement.classList.toggle("is-active", isLoading);
-        //this.#searchText.setAttribute("aria-busy", `${isLoading}`);
-        if(isLoading) {
-            //show spinner
+        const inputWrapper = this.#searchText.closest('.search-bar__input-wrapper');
+        if (inputWrapper) {
+            inputWrapper.classList.toggle('search-bar--loading', isLoading);
         }
-        else {
-            //hide spinner
-        }
+        this.#searchText.setAttribute("aria-busy", `${isLoading}`);
     }
 
     setOnValueChangeListener(listenerFunc) {
@@ -33,27 +31,27 @@ class SeachText {
     }
 
     #onValueChangeNotify(value) {
-        if(this.#onValueChangeListener != null) {
+        if (this.#onValueChangeListener != null) {
             this.#onValueChangeListener(value);
         }
     }
 
     #onInputHandler = (event) => {
-        
+
         clearTimeout(this.#searchTimeout);
         let value = event.target.value.trim();
-        
-        if (value === "" ) {
+
+        if (value === "") {
             value = null;
         }
 
         this.#searchTimeout = setTimeout(() => {
-            
-            if(#previusValue != value){
+
+            if (this.#previusValue != value) {
                 this.#onValueChangeNotify(value);
                 this.#previusValue = value;
             }
-            
+
         }, this.#debounceDelay);
     }
 }
