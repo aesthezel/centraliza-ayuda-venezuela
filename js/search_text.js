@@ -1,8 +1,6 @@
 class SeachText {
 
     #searchText;
-    #magnifierElement;
-    #spinnerElement;
     #debounceDelay;
     #searchTimeout = null;
 
@@ -12,8 +10,6 @@ class SeachText {
 
     constructor(config) {
         this.#searchText = config.searchTextInput;
-        this.#magnifierElement = config.magnifierElement;
-        this.#spinnerElement = config.spinnerElement;
         this.#debounceDelay = config.debounceDelay != null ? config.debounceDelay : 300;
         this.#searchText.addEventListener("input", this.#onInputHandler);
     }

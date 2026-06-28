@@ -24,8 +24,28 @@ function main() {
         .finally(() => {
             
         });
+   
+   // =========================
+   // ====== side bar =========
+   // =========================
+   const sideBar = new SideBar({
 
-   // ==========================
+   });
+
+   apiManager.getTags({})
+        .then((res) => {
+            sideBar.setTagItems(res.data);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+        .finally(() => {
+            
+        });
+    
+   // =========================
+   // ====== search text ======
+   // =========================
    const searchTextInput = document.getElementById("search-text-input");
    const magnifierElement = document.querySelector('.search-bar__icon--magnifier');
    const spinnerElement = document.querySelector('.search-bar__icon--spinner');
@@ -61,6 +81,8 @@ function main() {
                 searchText.showLoading(false);
             });
    });
+
+   
 }
 
 window.addEventListener("load", main);
