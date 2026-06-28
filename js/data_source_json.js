@@ -629,7 +629,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Aid Venezuela (NUEVO)",
+        "nombre": "Aid Venezuela",
         "url": "https://aidvenezuela.net",
         "descripcion": "Reporte/agregador",
         "id": 65,
@@ -639,7 +639,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "SOS Venezuela (net) (NUEVO)",
+        "nombre": "SOS Venezuela (net)",
         "url": "https://sosvenezuela.net",
         "descripcion": "Reporte",
         "id": 66,
@@ -648,7 +648,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Unidos Venezuela (NUEVO)",
+        "nombre": "Unidos Venezuela",
         "url": "https://unidosvenezuela.vercel.app",
         "descripcion": "Reporte",
         "id": 67,
@@ -657,7 +657,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Terremoto en Venezuela (NUEVO)",
+        "nombre": "Terremoto en Venezuela",
         "url": "https://terremotoenvenezuela.com",
         "descripcion": "Reporte",
         "id": 68,
@@ -666,7 +666,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Buscador Unificado VZLA (NUEVO)",
+        "nombre": "Buscador Unificado VZLA",
         "url": "https://github.com/joeyrubio/buscador-unificado-vzla",
         "descripcion": "Proyecto para UNIFICAR data desaparecidos/ubicados",
         "id": 69,
@@ -715,7 +715,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Terremoto Venezuela (app)",
+        "nombre": "Terremoto Venezuela",
         "url": "https://terremotovenezuela.app",
         "descripcion": "Mapa de danos",
         "id": 74,
@@ -724,7 +724,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Terremoto VE (netlify)",
+        "nombre": "Terremoto VE",
         "url": "https://terremotove.netlify.app",
         "descripcion": "Mapa (colapsos+desap.+acopios)",
         "id": 75,
@@ -743,7 +743,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Centinela (NUEVO)",
+        "nombre": "Centinela",
         "url": "https://app.appcentinela.com",
         "descripcion": "Reporte de danos",
         "id": 77,
@@ -752,7 +752,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "RIAVE (NUEVO)",
+        "nombre": "RIAVE",
         "url": "https://riave-deploy.vercel.app",
         "descripcion": "Reporte",
         "id": 78,
@@ -761,7 +761,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Reporta Venezuela (org) (NUEVO)",
+        "nombre": "Reporta Venezuela (org)",
         "url": "https://reportavenezuela.org",
         "descripcion": "Reporte de danos",
         "id": 79,
@@ -770,7 +770,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Microsoft AI for Good (HDX) (NUEVO)",
+        "nombre": "Microsoft AI for Good (HDX)",
         "url": "https://data.humdata.org",
         "descripcion": "Dataset danos edificios Catia La Mar",
         "id": 80,
@@ -789,7 +789,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Venezuela Earthquake Map (NUEVO)",
+        "nombre": "Venezuela Earthquake Map",
         "url": "https://venezuela-earthquake-map.vercel.app",
         "descripcion": "Heatmap auto-agrega YouTube/X/IG c/10min",
         "id": 82,
@@ -798,7 +798,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Sheet Centros de Acopio (M. Lozada) (TOP)",
+        "nombre": "Sheet Centros de Acopio (M. Lozada)",
         "url": "https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM",
         "descripcion": "~100 centros con dir/coords/contacto",
         "id": 83,
@@ -873,7 +873,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Tu Gruero (NUEVO)",
+        "nombre": "Tu Gruero",
         "url": "https://tugruero.com",
         "descripcion": "Logistica/transporte de insumos",
         "id": 90,
@@ -996,7 +996,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Venezuela Solidaria (NUEVO)",
+        "nombre": "Venezuela Solidaria",
         "url": "https://venezuelasolidaria.com",
         "descripcion": "Directorio de paginas validadas",
         "id": 104,
@@ -1014,7 +1014,7 @@ const SOURCES = [
         ]
     },
     {
-        "nombre": "Ayuda VE (DROSS)",
+        "nombre": "Ayuda VE",
         "url": "https://ayudave.com",
         "descripcion": "Mapa reportar/insumos/ayuda",
         "id": 106,
@@ -1218,7 +1218,7 @@ const SOURCES = [
     {
         "nombre": "Sector Ve",
         "url": "https://sectorve.com/",
-        "descripcion": "Organiza de manera organizada con agentes de IA ifnromacion actualizada organzialdola por secotres ya sea noticias, acopios, donaciones, eventos de ayuda etc",
+        "descripcion": "Organiza de manera organizada con agentes de IA iformacion actualizada organzialdola por secotres ya sea noticias, acopios, donaciones, eventos de ayuda etc",
         "id": 129,
         "tags": [
             "Acopios y Donaciones",
