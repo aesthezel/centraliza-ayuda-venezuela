@@ -1,0 +1,138 @@
+/* ===========================
+   Side Menu (Sidebar)
+   Archivo dedicado para estilos del menú lateral
+   =========================== */
+
+/* Hamburger button - posicionado a la derecha del header via flex */
+.header__menu-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-left: auto;
+}
+
+.header__menu-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+
+.sidebar-overlay--visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Sidebar panel */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 78%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 300ms ease;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar--open {
+    transform: translateX(0);
+}
+
+/* Sidebar header with close button */
+.sidebar__header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem;
+}
+
+.sidebar__close-button {
+    background: none;
+    border: none;
+    color: #333333;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.sidebar__close-button:focus-visible {
+    outline: 2px solid #1a237e;
+    outline-offset: 2px;
+}
+
+/* Scrollable section */
+.sidebar__scrollable {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 1rem;
+}
+
+/* Fixed footer section */
+.sidebar__footer {
+    padding: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.sidebar__contribute-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1a237e;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.sidebar__contribute-link:hover,
+.sidebar__contribute-link:focus {
+    text-decoration: underline;
+}
+
+.sidebar__contribute-link:focus-visible {
+    outline: 2px solid #1a237e;
+    outline-offset: 2px;
+}
+
+.sidebar__contact {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    color: #666666;
+}
+
+/* Desktop: sidebar más angosto */
+@media (min-width: 768px) {
+    .sidebar {
+        width: 35%;
+        max-width: 400px;
+    }
+}

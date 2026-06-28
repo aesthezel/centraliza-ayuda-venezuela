@@ -30,7 +30,9 @@ header {
     background-color: #1a237e;
     color: #ffffff;
     padding: 1.25rem 1rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header h1 {

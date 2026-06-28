@@ -29,7 +29,10 @@ function main() {
    // ====== side bar =========
    // =========================
    const sideBar = new SideBar({
-
+       sidebarElement: document.getElementById('sidebar-nav'),
+       overlayElement: document.querySelector('.sidebar-overlay'),
+       closeButtonElement: document.querySelector('.sidebar__close-button'),
+       hamburgerButtonElement: document.querySelector('.header__menu-button')
    });
 
    apiManager.getTags({})
