@@ -1,4 +1,98 @@
 
+class Manager {
+
+    #apiManager;
+    #sideBar;
+    #viewManager;
+    #searchText;
+    #selectedTagZone;
+    
+    constructor(config) {
+        
+        this.#apiManager = config.apiManager;
+        this.#sideBar = config.sideBar;
+        this.#searchText = config.searchText;
+        this.#selectedTagZone = config.selectedTagZone;
+        this.#viewManager = config.viewManager;
+    }
+
+    setupSearchTextChange() {
+
+        this.#searchText.setOnValueChangeListener((value) => {
+        
+            const tags = this.#sideBar.getSelectedTags();
+            this.#requestSites(value,tags);
+        });
+    }
+
+    setupSidebarTagsClick() {
+        
+        this.#sideBar.setOnTagItemClickListener((allTags) => {
+
+            const text = this.#searchText.getText() == "" ? null:this.#searchText.getText();
+            this.#selectedTagZone.setSelectedTags(allTags);
+            this.#requestSites(text,allTags);
+        });
+
+    }
+
+    setupSeletedTagsZoneClick() {
+
+        this.#selectedTagZone.setOnRemoveTagListener((allSelectedItems) => {
+
+            const text = this.#searchText.getText() == "" ? null:this.#searchText.getText();
+            this.#sideBar.updateSelectedItems(allSelectedItems);
+            this.#requestSites(text,allSelectedItems);
+        });
+    }
+
+    initSitesLoad() {
+        this.#requestSites(null,[]);
+    }
+
+    initTagsLoad() {
+        
+        this.#apiManager.getTags({})
+            .then((res) => {
+                this.#sideBar.setTagItems(res.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                
+            });
+    }
+
+    #requestSites(textToSearch, tags) {
+        
+        this.#searchText.showLoading(true);
+        this.#apiManager.seachForSites({
+            "textToSearch":textToSearch,
+            "tags":tags
+        })
+            .then((res) => {
+                
+                this.#viewManager.hideErrors();
+                this.#viewManager.cleanView();
+                if(res?.data?.length > 0) {
+                    this.#viewManager.showResult(res.data);
+                }
+                else{
+                    this.#viewManager.showError("No se encontraron coincidencias.");
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                this.#viewManager.hideErrors();
+                this.#viewManager.cleanView();
+                this.#viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
+            })
+            .finally(() => {
+                this.#searchText.showLoading(false);
+            });
+    }
+}
 
 function main() {
 
@@ -10,27 +104,9 @@ function main() {
    const resultItemViewBuilder = new ResultItemViewBuilder({ rootView: document });
    const viewManager = new View(document, { resultItemViewBuilder: resultItemViewBuilder });
    
-   const payload = {};
-   
-   
-   apiManager.getSites(payload)
-        .then((res) => {
-                        
-            viewManager.cleanView();
-            viewManager.showResult(res.data);
-        })
-        .catch((err) => {
-           
-            console.error(err);
-            viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
-        })
-        .finally(() => {
-            
-        });
-   
-   // =========================
+   // ==============================
    // ==== tag item view builder ===
-   // =========================
+   // ==============================
    const tagItemViewBuilder = new TagItemViewBuilder({ rootView: document });
 
    // =============================
@@ -52,17 +128,6 @@ function main() {
        tagItemViewBuilder: tagItemViewBuilder
    });
 
-   apiManager.getTags({})
-        .then((res) => {
-            sideBar.setTagItems(res.data);
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-        .finally(() => {
-            
-        });
-    
    // =========================
    // ====== search text ======
    // =========================
@@ -76,94 +141,20 @@ function main() {
         "debounceDelay":300
    });
    
-   searchText.setOnValueChangeListener((value) => {
-        
-        
-        searchText.showLoading(true);
-        const tags = sideBar.getSelectedTags();
-        apiManager.seachForSites({
-            "textToSearch":value,
-            "tags":tags
-        })
-            .then((res) => {
-                viewManager.hideErrors();
-                viewManager.cleanView();
-                if(res?.data?.length > 0) {
-                    viewManager.showResult(res.data);
-                }
-                else{
-                    viewManager.showError("No se encontraron coincidencias.");
-                }
-            })
-            .catch((err) => {
-                console.error(err);
-                viewManager.hideErrors();
-                viewManager.cleanView();
-                viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
-            })
-            .finally(() => {
-                searchText.showLoading(false);
-            });
-   });
-
-   sideBar.setOnTagItemClickListener((allTags) => {
-
-        selectedTagZone.setSelectedTags(allTags);
-        const text = searchText.getText() == "" ? null:searchText.getText();
-        apiManager.seachForSites({
-            "textToSearch":text,
-            "tags":allTags
-        })
-        .then((res) => {
-            viewManager.hideErrors();
-            viewManager.cleanView();
-            if(res?.data?.length > 0) {
-                viewManager.showResult(res.data);
-            }
-            else{
-                viewManager.showError("No se encontraron coincidencias.");
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            viewManager.hideErrors();
-            viewManager.cleanView();
-            viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
-        })
-        .finally(() => {
-            searchText.showLoading(false);
-        });
-   });
    
-   selectedTagZone.setOnRemoveTagListener((allSelectedItems) => {
-
-        sideBar.updateSelectedItems(allSelectedItems);
-        const text = searchText.getText() == "" ? null:searchText.getText();
-        apiManager.seachForSites({
-            "textToSearch":text,
-            "tags":allSelectedItems
-        })
-        .then((res) => {
-            viewManager.hideErrors();
-            viewManager.cleanView();
-            if(res?.data?.length > 0) {
-                viewManager.showResult(res.data);
-            }
-            else{
-                viewManager.showError("No se encontraron coincidencias.");
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            viewManager.hideErrors();
-            viewManager.cleanView();
-            viewManager.showError("No se pudieron cargar los datos del directorio. Por favor, intente de nuevo más tarde.");
-        })
-        .finally(() => {
-            searchText.showLoading(false);
-        });
+   const manager = new Manager({
+        apiManager:apiManager,
+        sideBar:sideBar,
+        searchText:searchText,
+        selectedTagZone:selectedTagZone,
+        viewManager:viewManager,
    });
 
+    manager.initSitesLoad();
+    manager.initTagsLoad();
+    manager.setupSearchTextChange();
+    manager.setupSidebarTagsClick();
+    manager.setupSeletedTagsZoneClick();
 }
 
 window.addEventListener("load", main);
