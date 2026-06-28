@@ -1,0 +1,82 @@
+/* ===========================
+   Toggle Buttons (Tag Filters)
+   Botones pill-shaped para filtrar por tags
+   =========================== */
+
+/* Toggle Button base */
+.sidebar-tag-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+/* Active state */
+.sidebar-tag-btn--active {
+    background-color: #1a237e;
+    color: #ffffff;
+    border-color: #1a237e;
+}
+
+/* Hover states */
+.sidebar-tag-btn:hover {
+    background-color: #e8eaf6;
+}
+
+.sidebar-tag-btn--active:hover {
+    background-color: #283593;
+}
+
+/* Focus visible */
+.sidebar-tag-btn:focus-visible {
+    outline: 2px solid #1a237e;
+    outline-offset: 2px;
+}
+
+/* Label truncation */
+.sidebar-tag-btn__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    text-align: left;
+}
+
+/* Indicator (checkmark) */
+.sidebar-tag-btn__indicator {
+    width: 18px;
+    height: 18px;
+    margin-left: 0.5rem;
+    border: 2px solid #cccccc;
+    border-radius: 3px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.sidebar-tag-btn--active .sidebar-tag-btn__indicator {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.sidebar-tag-btn--active .sidebar-tag-btn__indicator::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 9px;
+    border: solid #1a237e;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}

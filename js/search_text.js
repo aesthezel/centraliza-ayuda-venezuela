@@ -22,6 +22,10 @@ class SeachText {
         this.#searchText.setAttribute("aria-busy", `${isLoading}`);
     }
 
+    getText() {
+        return this.#searchText.value.trim();
+    }
+
     setOnValueChangeListener(listenerFunc) {
         this.#onValueChangeListener = listenerFunc;
     }

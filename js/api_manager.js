@@ -48,20 +48,19 @@ class ApiManager {
         const textToSearch = payload.textToSearch != null ? payload.textToSearch : null;
         const selectedTags = payload.tags != null ? payload.tags : [];
         
-        if (textToSearch == null && selectedTags.length <=0 ) {
-            return  { data:this.#sites()};
-        }
-
-
-        const matches = [];
         let sites;
-        if(selectedTags.length > 0) {
-            sites = this.#siteGroupByTag(searchTags);
+        if (selectedTags.length > 0 ) {
+            sites = this.#siteGroupByTag(selectedTags);
         }
         else {
             sites = this.#sites();
         }
+
+        if (textToSearch == null) {
+            return  { data:sites};
+        }
         
+        const matches = [];
         const escapedText = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const containtWordRegex = new RegExp(escapedText, "i");
 
